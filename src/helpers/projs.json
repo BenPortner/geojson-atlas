@@ -1,0 +1,32 @@
+[
+    {
+        "name": "wgs84",
+        "proj4": "+proj=longlat +datum=WGS84 +no_defs +type=crs",
+        "url": "http://spatialreference.org/ref/epsg/4326/"
+    },
+    {
+        "name": "web_mercator",
+        "proj4": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0 +lon_0=0 +x_0=0 +y_0=0 +k=1 +units=m +nadgrids=@null +wktext +no_defs +type=crs",
+        "url": "https://spatialreference.org/ref/epsg/3857/"
+    },
+    {
+        "name": "plate_carree",
+        "proj4": "+proj=eqc +lat_ts=0 +lat_0=0 +lon_0=0 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs"
+    },
+    {
+        "name": "mollweide",
+        "proj4": "+proj=moll +lon_0=0 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs"
+    },
+    {
+        "name": "miller",
+        "proj4": "+proj=mill +R_A +lon_0=0 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs"
+    },
+    {
+        "name": "behrmann",
+        "proj4": "+proj=cea +lat_ts=30 +lon_0=0 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs"
+    },
+    {
+        "name": "lambert_europe",
+        "proj4": "+proj=lcc +lat_1=35 +lat_2=65 +lat_0=52 +lon_0=10 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs"
+    }
+]

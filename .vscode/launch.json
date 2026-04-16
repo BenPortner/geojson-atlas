@@ -1,0 +1,71 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "main",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\src\\main.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "download world",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\src\\00_download_ne_data.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "extract countries",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\src\\01_extract_ne_countries.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "postprocess countries",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\src\\02_postprocess_countries.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "project world",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\src\\03_project_world_maps.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "create europe",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\src\\04_create_europe_maps.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "helper: find split maps",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\src\\helpers\\find_split_maps.js"
+        }
+    ]
+}

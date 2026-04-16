@@ -1,0 +1,47 @@
+{
+  "name": "geojson-atlas",
+  "version": "0.1.0",
+  "description": "A curated collection of GeoJSON maps for the world, its countries, and regions.",
+  "author": "Benjamin W. Portner",
+  "contributors": [],
+  "scripts": {
+    "all": "node src/main.js",
+    "download": "node src/00_download_ne_data.js",
+    "extract_countries": "node src/01_extract_ne_countries.js",
+    "postprocess_countries": "node src/02_postprocess_countries.js",
+    "project_world": "node src/03_project_world_maps.js",
+    "create_europe": "node src/04_create_europe_maps.js",
+    "find_split_maps": "node src/helpers/find_split_maps.js",
+    "prettier": "prettier --write src/"
+  },
+  "license": "Creative Commons Zero v1.0 Universal (CC0)",
+  "homepage": "https://github.com/BenPortner/geojson-atlas",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/BenPortner/geojson-atlas.git"
+  },
+  "bugs": {
+    "url": "https://github.com/BenPortner/geojson-atlas/issues"
+  },
+  "keywords": [
+    "maps",
+    "atlas",
+    "geojson",
+    "world",
+    "countries",
+    "web-mercator",
+    "natural earth"
+  ],
+  "type": "commonjs",
+  "dependencies": {
+    "@turf/bbox-clip": "^7.3.4",
+    "@turf/clone": "^7.3.4",
+    "@turf/combine": "^7.3.4",
+    "@turf/meta": "^7.3.4",
+    "@turf/union": "^7.3.4",
+    "proj4": "^2.20.8"
+  },
+  "devDependencies": {
+    "prettier": "^3.0.0"
+  }
+}
