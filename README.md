@@ -26,7 +26,7 @@ Projected GeoJSON files contain pseudo-WGS84 coordinates intended for display in
 1) We don't have to rely on the renderer to offer the desired target projection.
 2) We don't have to re-project on the client side, which can be expensive for large datasets.
 
-This keeps data easy to consume in common web mapping stacks. The downside is that the coordinates in the projected GeoJSON files are not in standard WGS84 format.
+This keeps data easy to consume in common web mapping stacks. The downside is that the coordinates in the projected GeoJSON files are not in standard WGS84 format and will not fit on common tile layers.
 
 ## Similar Projects
 
