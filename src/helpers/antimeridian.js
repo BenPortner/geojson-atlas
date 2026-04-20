@@ -8,17 +8,19 @@ function isOnAntimeridian(x) {
 }
 
 function joinMultiPolygonAlongAntimeridian(feature) {
-    if (feature.geometry.type !== 'MultiPolygon') {
+    if (feature.geometry.type == 'Polygon') {
+        return feature; // nothing to do
+    } else if (feature.geometry.type !== 'MultiPolygon') {
         console.error(
             'Antimeridian union not implemented for feature type ' + feature.geometry.type
         );
+        return feature;
     }
-    // filter polygons that have coordinates on the antimeridian
     const polygons = feature.geometry.coordinates.map(polygon);
     // add 360 longitude to all coordinates that are on the "left" side of the antimeridian
     polygons
         .filter((poly) => coordAll(poly).every((coord) => coord[0] < 0))
-        .map((poly) => coordEach(poly, (coord) => (coord[0] += 360)));
+        .forEach((poly) => coordEach(poly, (coord) => (coord[0] += 360)));
     const antiMeridianPolygons = polygons.filter(isOnAntimeridian);
     const otherPolygons = polygons.filter((poly) => !isOnAntimeridian(poly));
     // join all antimeridian polygons into a single polygon
@@ -26,6 +28,7 @@ function joinMultiPolygonAlongAntimeridian(feature) {
     // put the new polygon together with the other polygons that don't touch the antimeridian
     const combined = combine(featureCollection([...otherPolygons, joined]));
     feature.geometry.coordinates = combined.features[0].geometry.coordinates;
+    return feature;
 }
 
 module.exports = {
