@@ -28,5 +28,9 @@
     {
         "name": "lambert_europe",
         "proj4": "+proj=lcc +lat_1=35 +lat_2=65 +lat_0=52 +lon_0=10 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs"
+    },
+    {
+        "name": "north_america_eqdc",
+        "proj4": "+proj=eqdc +lat_0=40 +lon_0=-96 +lat_1=20 +lat_2=60 +x_0=0 +y_0=0 +datum=NAD83 +units=m +no_defs +type=crs"
     }
 ]

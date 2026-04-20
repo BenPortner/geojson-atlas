@@ -61,6 +61,15 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "create north america",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\src\\05_create_north_america_maps.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "helper: find split maps",
             "skipFiles": [
                 "<node_internals>/**"

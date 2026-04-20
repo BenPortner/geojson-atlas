@@ -11,6 +11,7 @@
     "postprocess_countries": "node src/02_postprocess_countries.js",
     "project_world": "node src/03_project_world_maps.js",
     "create_europe": "node src/04_create_europe_maps.js",
+    "create_north_america": "node src/05_create_north_america_maps.js",
     "find_split_maps": "node src/helpers/find_split_maps.js",
     "prettier": "prettier --write src/"
   },
@@ -34,6 +35,7 @@
   ],
   "type": "commonjs",
   "dependencies": {
+    "@turf/bbox": "^7.3.5",
     "@turf/bbox-clip": "^7.3.4",
     "@turf/clone": "^7.3.4",
     "@turf/combine": "^7.3.4",
