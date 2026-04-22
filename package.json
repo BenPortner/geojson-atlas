@@ -12,6 +12,7 @@
     "project_world": "node src/03_project_world_maps.js",
     "create_europe": "node src/04_create_europe_maps.js",
     "create_north_america": "node src/05_create_north_america_maps.js",
+    "create_south_america": "node src/06_create_south_america_maps.js",
     "find_split_maps": "node src/helpers/find_split_maps.js",
     "prettier": "prettier --write src/"
   },
