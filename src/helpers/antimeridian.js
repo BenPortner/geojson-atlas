@@ -17,7 +17,7 @@ function joinMultiPolygonAlongAntimeridian(feature) {
         return feature;
     }
     const polygons = feature.geometry.coordinates.map(polygon);
-    // add 360 longitude to all coordinates that are on the "left" side of the antimeridian
+    // add 360 longitude to all coordinates that are on the "left" side of the meridian
     polygons
         .filter((poly) => coordAll(poly).every((coord) => coord[0] < 0))
         .forEach((poly) => coordEach(poly, (coord) => (coord[0] += 360)));

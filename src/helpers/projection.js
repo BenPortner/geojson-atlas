@@ -4,11 +4,12 @@ const proj4 = require('proj4');
 const PROJS = require('./projs.json');
 const bboxClip = require('@turf/bbox-clip').default;
 const bbox = require('@turf/bbox').default;
-const { coordEach, coordAll } = require('@turf/meta');
+const { coordEach, coordAll, geomEach } = require('@turf/meta');
 const clone = require('@turf/clone').default;
-const featureCollection = require('@turf/helpers').featureCollection;
+const { featureCollection, polygon } = require('@turf/helpers');
 const { world_path, regions_path } = require('./paths');
 const { isOnAntimeridian, joinMultiPolygonAlongAntimeridian } = require('./antimeridian');
+const { feature } = require('@turf/helpers');
 
 
 function getProj4(name) {
@@ -44,6 +45,17 @@ function projectFeatureCollection(fc, fromName, toName) {
     return featureCollection;
 }
 
+function getPolygons(feature) {
+    if (feature.geometry.type === 'MultiPolygon') {
+        return feature.geometry.coordinates.map(polygon);
+    } else if (feature.geometry.type === 'Polygon') {
+        return [feature];
+    } else {
+        console.error('Unknown geometry type: ' + feature.geometry.type);
+        return [];
+    }
+}
+
 function exportProjection(worldGeoJSON, projectionName, joinAntimeridian, projFeatureFilter, bbFeatureFilter, bboxMap, outFilePath) {
     // clone data before manipulating
     let world = clone(worldGeoJSON);
@@ -59,12 +71,14 @@ function exportProjection(worldGeoJSON, projectionName, joinAntimeridian, projFe
 
         if (joinAntimeridian === 'left') {
             world.features
-                .filter((feature) => coordAll(feature).every((coord) => coord[0] > 0))
-                .forEach((feature) => coordEach(feature, (coord) => (coord[0] -= 360)));
+                .flatMap(getPolygons)
+                .filter((polygon) => coordAll(polygon).every((coord) => coord[0] > 0))
+                .forEach((polygon) => coordEach(polygon, (coord) => (coord[0] -= 360)));
         } else if (joinAntimeridian === 'right') {
             world.features
-                .filter((feature) => coordAll(feature).every((coord) => coord[0] < 0))
-                .forEach((feature) => coordEach(feature, (coord) => (coord[0] += 360)));
+                .flatMap(getPolygons)
+                .filter((polygon) => coordAll(polygon).every((coord) => coord[0] < 0))
+                .forEach((polygon) => coordEach(polygon, (coord) => (coord[0] += 360)));
         }
     }
 
