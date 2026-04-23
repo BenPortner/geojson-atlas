@@ -1,7 +1,15 @@
+const fs = require('fs');
+const path = require('path');
 const proj4 = require('proj4');
 const PROJS = require('./projs.json');
-const coordEach = require('@turf/meta').coordEach;
+const bboxClip = require('@turf/bbox-clip').default;
+const bbox = require('@turf/bbox').default;
+const { coordEach, coordAll } = require('@turf/meta');
 const clone = require('@turf/clone').default;
+const featureCollection = require('@turf/helpers').featureCollection;
+const { world_path, regions_path } = require('./paths');
+const { isOnAntimeridian, joinMultiPolygonAlongAntimeridian } = require('./antimeridian');
+
 
 function getProj4(name) {
     const proj4Definition = PROJS.find((proj) => proj.name === name)?.proj4;
@@ -36,6 +44,53 @@ function projectFeatureCollection(fc, fromName, toName) {
     return featureCollection;
 }
 
+function exportProjection(worldGeoJSON, projectionName, joinAntimeridian, projFeatureFilter, bbFeatureFilter, bboxMap, outFilePath) {
+    // clone data before manipulating
+    let world = clone(worldGeoJSON);
+
+    // exclude countries to avoid projection issues
+    world.features = world.features.filter(projFeatureFilter);
+
+    // fix countries split along the antimeridian
+    if (joinAntimeridian) {
+        world.features
+            .filter(isOnAntimeridian)
+            .map(joinMultiPolygonAlongAntimeridian)
+
+        if (joinAntimeridian === 'left') {
+            world.features
+                .filter((feature) => coordAll(feature).every((coord) => coord[0] > 0))
+                .forEach((feature) => coordEach(feature, (coord) => (coord[0] -= 360)));
+        } else if (joinAntimeridian === 'right') {
+            world.features
+                .filter((feature) => coordAll(feature).every((coord) => coord[0] < 0))
+                .forEach((feature) => coordEach(feature, (coord) => (coord[0] += 360)));
+        }
+    }
+
+
+    // apply projection if not wgs84
+    if (projectionName !== 'wgs84') {
+        world = projectFeatureCollection(world, 'wgs84', projectionName, 6);
+        world = projectFeatureCollection(world, 'web_mercator', 'wgs84', 6);
+    }
+
+    // determine the bounding box and cut geometries outside of it
+    const bbCountries = world.features.filter(bbFeatureFilter);
+    bboxMap.set(projectionName, bboxMap.get(projectionName) ?? bbox(featureCollection(bbCountries)));
+    world.features.forEach((feature) => {
+        feature.geometry = bboxClip(feature.geometry, bboxMap.get(projectionName)).geometry;
+    });
+
+    // filter countries with empty geometries after cutting
+    world.features = world.features.filter((feature) => feature.geometry.coordinates.length > 0);
+
+    // export
+    fs.mkdirSync(path.dirname(outFilePath), { recursive: true });
+    fs.writeFileSync(outFilePath, JSON.stringify(world, null, 0));
+}
+
 module.exports = {
     projectFeatureCollection,
+    exportProjection,
 };
