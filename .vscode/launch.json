@@ -88,6 +88,15 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "create oceania",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\src\\08_create_oceania_maps.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "helper: find split maps",
             "skipFiles": [
                 "<node_internals>/**"

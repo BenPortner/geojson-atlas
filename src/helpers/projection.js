@@ -91,7 +91,12 @@ function exportProjection(worldGeoJSON, projectionName, joinAntimeridian, projFe
 
     // determine the bounding box and cut geometries outside of it
     const bbCountries = world.features.filter(bbFeatureFilter);
-    bboxMap.set(projectionName, bboxMap.get(projectionName) ?? bbox(featureCollection(bbCountries)));
+    if (bboxMap == undefined) {
+        bboxMap = new Map([[projectionName, bbox(featureCollection(bbCountries))]]);
+    } else {
+        // this makes sure that the same bbox is used for all map resolutions
+        bboxMap.set(projectionName, bboxMap.get(projectionName) ?? bbox(featureCollection(bbCountries)));
+    }
     world.features.forEach((feature) => {
         feature.geometry = bboxClip(feature.geometry, bboxMap.get(projectionName)).geometry;
     });

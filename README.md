@@ -9,7 +9,7 @@ The `geojson` folder in this project contains:
 - World country maps in 110m, 50m and 10m resolutions.
 - Country-level files with admin-1 subdivisions (states and provinces) in 10m resolution.
 - Postprocessed country geometries for practical rendering use-cases (antimeridian-safe and mainland variants).
-- Region maps (currently Africa, Europe, North America, South America).
+- Region maps (currently Africa, Europe, North America, South America, Oceania).
 - Projected map variants (exported in pseudo-WGS84 coordinates specifically for Web Mercator renderers).
 
 ## Map Variants and Naming
@@ -23,6 +23,7 @@ The `geojson` folder in this project contains:
     - North America: currently WGS84 and Equidistant Conic (eqdc) variants.
     - South America: currently WGS84 and Equidistant Conic (eqdc) variants.
     - Africa: currently WGS84 and Equidistant Conic (eqdc) variants.
+    - Oceania: currently WGS84 and Lambert Azimuthal Equal-Area (laea) variants.
 
 ## Projection Behavior
 
@@ -76,6 +77,7 @@ npm run create_europe
 npm run create_north_america
 npm run create_south_america
 npm run create_africa
+npm run create_oceania
 ~~~
 
 ## License
