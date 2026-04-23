@@ -79,6 +79,15 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "create africa",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\src\\07_create_africa_maps.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "helper: find split maps",
             "skipFiles": [
                 "<node_internals>/**"
