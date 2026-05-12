@@ -22,6 +22,7 @@ The `geojson` folder in this project contains:
     - Europe: currently WGS84 and Lambert Conformal Conic (lcc) variants.
     - Asia: currently WGS84 and Lambert Conformal Conic (lcc) variants.
         - Western Asia / Middle East: currently WGS84.
+        - Central Asia: currently WGS84.
         - Southern Asia: currently WGS84.
         - South-Eastern Asia: currently WGS84.
     - North America: currently WGS84 and Equidistant Conic (eqdc) variants.
@@ -84,6 +85,7 @@ npm run create_africa
 npm run create_oceania
 npm run create_asia
 npm run create_western_asia
+npm run create_central_asia
 npm run create_southern_asia
 npm run create_south-eastern_asia
 ~~~

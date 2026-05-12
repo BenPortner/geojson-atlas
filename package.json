@@ -19,6 +19,7 @@
     "create_western_asia": "node src/10_create_western_asia_maps.js",
     "create_southern_asia": "node src/11_create_southern_asia_maps.js",
     "create_south-eastern_asia": "node src/12_create_south-eastern_asia_maps.js",
+    "create_central_asia": "node src/13_create_central_asia_maps.js",
     "find_split_maps": "node src/helpers/find_split_maps.js",
     "prettier": "prettier --write src/"
   },
