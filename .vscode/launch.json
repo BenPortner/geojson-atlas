@@ -70,6 +70,15 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "create caribbean",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\src\\15_create_caribbean_maps.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "create south america",
             "skipFiles": [
                 "<node_internals>/**"

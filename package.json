@@ -12,6 +12,7 @@
     "project_world": "node src/03_project_world_maps.js",
     "create_europe": "node src/04_create_europe_maps.js",
     "create_north_america": "node src/05_create_north_america_maps.js",
+    "create_caribbean": "node src/15_create_caribbean_maps.js",
     "create_south_america": "node src/06_create_south_america_maps.js",
     "create_africa": "node src/07_create_africa_maps.js",
     "create_oceania": "node src/08_create_oceania_maps.js",

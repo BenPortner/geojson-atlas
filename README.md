@@ -28,6 +28,7 @@ The `geojson` folder in this project contains:
         - South-Eastern Asia: currently WGS84.
     - North America: currently WGS84 and Equidistant Conic (eqdc) variants.
     - South America: currently WGS84 and Equidistant Conic (eqdc) variants.
+    - Caribbean: currently WGS84.
     - Africa: currently WGS84 and Equidistant Conic (eqdc) variants.
     - Oceania: currently WGS84 and Lambert Azimuthal Equal-Area (laea) variants.
 
@@ -81,6 +82,7 @@ npm run postprocess_countries
 npm run project_world
 npm run create_europe
 npm run create_north_america
+npm run create_caribbean
 npm run create_south_america
 npm run create_africa
 npm run create_oceania
