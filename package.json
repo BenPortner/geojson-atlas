@@ -16,6 +16,7 @@
     "create_africa": "node src/07_create_africa_maps.js",
     "create_oceania": "node src/08_create_oceania_maps.js",
     "create_asia": "node src/09_create_asia_maps.js",
+    "create_western_asia": "node src/10_create_western_asia_maps.js",
     "find_split_maps": "node src/helpers/find_split_maps.js",
     "prettier": "prettier --write src/"
   },
