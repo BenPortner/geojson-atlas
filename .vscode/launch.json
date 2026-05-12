@@ -97,6 +97,15 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "create asia",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\src\\09_create_asia_maps.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "helper: find split maps",
             "skipFiles": [
                 "<node_internals>/**"

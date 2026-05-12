@@ -67,7 +67,7 @@ function exportProjection(worldGeoJSON, projectionName, joinAntimeridian, projFe
     if (joinAntimeridian) {
         world.features
             .filter(isOnAntimeridian)
-            .map(joinMultiPolygonAlongAntimeridian)
+            .forEach(joinMultiPolygonAlongAntimeridian);
 
         if (joinAntimeridian === 'left') {
             world.features
