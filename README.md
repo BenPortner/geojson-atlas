@@ -20,6 +20,7 @@ The `geojson` folder in this project contains:
 - Projected world map variants: filename includes projection suffix, for example `-mollweide`, `-miller`, `-behrmann`.
 - Regions:
     - Europe: currently WGS84 and Lambert Conformal Conic (lcc) variants.
+    - Mediterranean: currently WGS84.
     - Asia: currently WGS84 and Lambert Conformal Conic (lcc) variants.
         - Western Asia / Middle East: currently WGS84.
         - Central Asia: currently WGS84.
@@ -81,6 +82,7 @@ npm run extract_countries
 npm run postprocess_countries
 npm run project_world
 npm run create_europe
+npm run create_mediterranean
 npm run create_north_america
 npm run create_caribbean
 npm run create_south_america

@@ -61,6 +61,15 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "create mediterranean",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\src\\16_create_mediterranean_maps.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "create north america",
             "skipFiles": [
                 "<node_internals>/**"

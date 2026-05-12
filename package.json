@@ -11,6 +11,7 @@
     "postprocess_countries": "node src/02_postprocess_countries.js",
     "project_world": "node src/03_project_world_maps.js",
     "create_europe": "node src/04_create_europe_maps.js",
+    "create_mediterranean": "node src/16_create_mediterranean_maps.js",
     "create_north_america": "node src/05_create_north_america_maps.js",
     "create_caribbean": "node src/15_create_caribbean_maps.js",
     "create_south_america": "node src/06_create_south_america_maps.js",
