@@ -115,6 +115,15 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "create southern asia",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\src\\11_create_southern_asia_maps.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "helper: find split maps",
             "skipFiles": [
                 "<node_internals>/**"
